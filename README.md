@@ -31,5 +31,4 @@ Resources used were made by:
 
 ## Contact ##
 
-* E-mail: <djskaarj@gmail.com>
 * Skype: `dr.predator4`
