@@ -127,11 +127,17 @@ script 902 (void)
 #define HID_CONVERSATION_NAME 2004
 #define HID_CONVERSATION_TEXT 2005
 #define HID_BOSSHP 2006
+#define HID_LOGMESSAGE 2007
 #define HID_BASESTATUS 2100
 
 function void ClearMessage(int hid)
 {
-	HudMessage(s:""; HUDMSG_PLAIN, hid, 0, 0, 0, 0);
+	HudMessageBold(s:""; HUDMSG_PLAIN, hid, 0, 0, 0, 0);
+}
+
+function void LogMessage(str message)
+{
+	HudMessageBold(s:message; HUDMSG_LOG, HID_LOGMESSAGE, 0, -999.0, -999.0, 1, 0);
 }
 
 function void InitHud(str font)
@@ -143,19 +149,19 @@ function void InitHud(str font)
 function void PrintObjective(str text)
 {
 	InitHud("BIGFONT");
-	HudMessageBold(s:"New objective: ", s:text; HUDMSG_TYPEON, HID_OBJECTIVE, CR_GREEN, 100.1, 400.2, 15.0, 0.1);	
+	HudMessageBold(s:"New objective: ", s:text; HUDMSG_LOG | HUDMSG_TYPEON, HID_OBJECTIVE, CR_GREEN, 100.1, 400.2, 15.0, 0.1);	
 }
 
 function void PrintEvent(str text)
 {
 	InitHud("BIGFONT");
-	HudMessageBold(s:text; HUDMSG_TYPEON, HID_EVENT, CR_WHITE, 576.0, 422.0, 0.0, 0.05, 3.0);
+	HudMessageBold(s:text; HUDMSG_LOG | HUDMSG_TYPEON, HID_EVENT, CR_WHITE, 576.0, 422.0, 0.0, 0.05, 3.0);
 }
 
 function void PrintMissionFailed(void)
 {
 	InitHud("BIGFONT");
-	HudMessageBold(s:"Mission failed!"; HUDMSG_PLAIN, 0, CR_RED, 320.0, 200.0, 6.0);
+	HudMessageBold(s:"Mission failed!"; HUDMSG_LOG | HUDMSG_PLAIN, 0, CR_RED, 320.0, 200.0, 6.0);
 }
 
 function void PrintConversation(str who, str text)
@@ -165,6 +171,8 @@ function void PrintConversation(str who, str text)
 	InitHud("SMALLFONT");
 	HudMessageBold(s:who, s:":"; HUDMSG_FADEINOUT, HID_CONVERSATION_NAME, CR_GREEN, 500.0, 300.1, 8.0, 1.0, 1.0);
 	HudMessageBold(s:text;       HUDMSG_FADEINOUT, HID_CONVERSATION_TEXT, CR_WHITE, 600.2, 320.1, 8.0, 1.0, 1.0);
+	
+	LogMessage(StrParam(s:"\cd", s:who, s:": \c-\n", s:text));
 }
 
 script hud_incoming_transmission (void)
