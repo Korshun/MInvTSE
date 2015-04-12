@@ -1,0 +1,320 @@
+#library "minv"
+#include "zcommon.acs"
+
+#define hud_incoming_transmission 899
+#define hud_base_status 898
+#define hud_boss_status 897
+#define monitor_protect_targets 896
+
+/*=========================================================*\
+|========================= GAME ============================|
+\*=========================================================*/
+
+
+#define MAX_BASE_STRUCTS 100
+#define MAX_PROTECT_TARGETS 100
+
+#define BASE_STRUCT_NAME 0
+#define BASE_STRUCT_TID 1
+#define BASE_STRUCT_OLDHP 2
+int BaseStructs[MAX_BASE_STRUCTS][3];
+int NumBaseStructs = 0;
+
+#define PROTECT_TARGET_NAME 0
+#define PROTECT_TARGET_TID 1
+int ProtectTargets[MAX_PROTECT_TARGETS][2];
+int NumProtectTargets = 0;
+
+#define NUM_MARINE_TYPES 8
+int MarineTypes[NUM_MARINE_TYPES] =
+{
+	"MarinePistol",
+	"MarineShotgun",
+	"MarineChaingun",
+	"MarineSuperShotgun",
+	"MarineRocket",
+	"MarinePlasmagun",
+	"MarineRailgun",
+	"MarineBfg"
+};
+
+int ProtectMode = false;
+
+function void AddBaseStruct(int name, int tid)
+{
+	if (NumBaseStructs == 0)
+		EnableBaseStatusHud();
+
+	BaseStructs[NumBaseStructs][BASE_STRUCT_NAME] = name;
+	BaseStructs[NumBaseStructs][BASE_STRUCT_TID] = tid;
+	BaseStructs[NumBaseStructs][BASE_STRUCT_OLDHP] = -999999;
+	NumBaseStructs++;
+}
+
+function void AddProtectTarget(int name, int tid)
+{
+	PrintObjective(StrParam(s:"Protect ", s:name));
+	ProtectTargets[NumProtectTargets][PROTECT_TARGET_NAME] = name;
+	ProtectTargets[NumProtectTargets][PROTECT_TARGET_TID] = tid;
+	NumProtectTargets++;
+}
+
+script monitor_protect_targets OPEN
+{
+	int failed = false;
+	while (!failed)
+	{
+		if (!ProtectMode)
+		{
+			Delay(1);
+			continue;
+		}
+		
+		for(int i = 0; i < NumProtectTargets; i++)
+		{
+			if (GetActorProperty(ProtectTargets[i][1], APROP_HEALTH) <= 0)
+			{
+				failed = true;
+				break;
+			}
+		}
+		Delay(1);
+	}
+
+	PrintMissionFailed();
+	Delay(35*2);
+	ChangeLevel(StrParam(s:"minv", s:GetLevelInfo(LEVELINFO_LEVELNUM)), 0, CHANGELEVEL_NOINTERMISSION | CHANGELEVEL_RESETHEALTH | CHANGELEVEL_RESETINVENTORY, GameSkill());
+}
+
+function void SetBossObjective(int actorname, int spottid, int actortid)
+{
+	PrintObjective(StrParam(s:"Defeat ", s:actorname));
+	
+	Spawn(actorname,
+		GetActorX(spottid),
+		GetActorY(spottid),
+		GetActorZ(spottid),
+	actortid, GetActorAngle(spottid));
+	
+	SetActorProperty(actortid, APROP_HEALTH, GetActorProperty(actortid, APROP_HEALTH) * PlayerCount());
+	
+	ACS_Execute(hud_boss_status, 0, actorname, actortid);
+}
+
+function void SetCustomObjective(str objective)
+{      
+	PrintObjective(StrParam(s:objective));
+}
+
+// Called by monsters.
+script 902 (void)
+{ 
+	if (ProtectMode)
+	{
+		for (int i = 0; i < NumProtectTargets; i++)
+			Thing_Hate(0, ProtectTargets[i][PROTECT_TARGET_TID], 4);
+	}
+}
+
+
+/*=========================================================*\
+|========================== HUD ============================|
+\*=========================================================*/
+
+#define HID_OBJECTIVE 2001
+#define HID_EVENT 2002
+#define HID_INCOMING_TRANSMISSION 2003
+#define HID_CONVERSATION_NAME 2004
+#define HID_CONVERSATION_TEXT 2005
+#define HID_BOSSHP 2006
+#define HID_BASESTATUS 2100
+
+function void ClearMessage(int hid)
+{
+	HudMessage(s:""; HUDMSG_PLAIN, hid, 0, 0, 0, 0);
+}
+
+function void InitHud(str font)
+{
+	SetHudSize(640, 480, true);
+	SetFont(font);
+}
+
+function void PrintObjective(str text)
+{
+	InitHud("BIGFONT");
+	HudMessageBold(s:"New objective: ", s:text; HUDMSG_TYPEON, HID_OBJECTIVE, CR_GREEN, 100.1, 400.2, 15.0, 0.1);	
+}
+
+function void PrintEvent(str text)
+{
+	InitHud("BIGFONT");
+	HudMessageBold(s:text; HUDMSG_TYPEON, HID_EVENT, CR_WHITE, 576.0, 422.0, 0.0, 0.05, 3.0);
+}
+
+function void PrintMissionFailed(void)
+{
+	InitHud("BIGFONT");
+	HudMessageBold(s:"Mission failed!"; HUDMSG_PLAIN, 0, CR_RED, 320.0, 200.0, 6.0);
+}
+
+function void PrintConversation(str who, str text)
+{
+	ACS_ExecuteAlways(hud_incoming_transmission, 0, 0, 0, 0);
+	
+	InitHud("SMALLFONT");
+	HudMessageBold(s:who, s:":"; HUDMSG_FADEINOUT, HID_CONVERSATION_NAME, CR_GREEN, 500.0, 300.1, 8.0, 1.0, 1.0);
+	HudMessageBold(s:text;       HUDMSG_FADEINOUT, HID_CONVERSATION_TEXT, CR_WHITE, 600.2, 320.1, 8.0, 1.0, 1.0);
+}
+
+script hud_incoming_transmission (void)
+{
+	for	(int i = 0; i < 5; i++)
+	{
+		InitHud("BIGFONT");
+		HudMessageBold(s:"INCOMING TRANSMISSION"; HUDMSG_PLAIN, HID_INCOMING_TRANSMISSION, CR_WHITE, 639.2, 0.1, 1.0);
+		Delay(70);
+	}
+}
+
+function void EnableBaseStatusHud(void)
+{
+	InitHud("BIGFONT");
+	HudMessageBold(s:"Base:"; HUDMSG_PLAIN, HID_BASESTATUS - 1, CR_YELLOW, 20.1, 280.0, 0);
+}
+
+script hud_base_status OPEN
+{
+	InitHud("SMALLFONT");
+	for (int i = 0; i < NumBaseStructs; i++)
+	{
+		int hp = GetActorProperty(BaseStructs[i][BASE_STRUCT_TID], APROP_HEALTH);
+		if (hp == BaseStructs[i][BASE_STRUCT_OLDHP])
+			continue;
+			
+		BaseStructs[i][BASE_STRUCT_OLDHP] = hp;
+		
+		if (hp > 0)
+			HudMessageBold(s:BaseStructs[i][BASE_STRUCT_NAME], s:"\cj: ", d:hp, s:" hp"; HUDMSG_PLAIN, HID_BASESTATUS + i, CR_GREEN, 20.1, 300.0 + i * 10.0, 0);
+		else
+			HudMessageBold(s:BaseStructs[i][BASE_STRUCT_NAME], s:" \cjdead";             HUDMSG_PLAIN, HID_BASESTATUS + i, CR_RED,   20.1, 300.0 + i * 10.0, 0);
+	}
+	
+	Delay(1);
+	restart;
+}
+
+script hud_boss_status (int name, int tid)
+{
+	int hp;
+	int oldhp = -999999;
+	do
+	{		
+		hp = GetActorProperty(tid, APROP_HEALTH);
+		if (hp != oldhp)
+		{
+			InitHud("BIGFONT");
+			HudMessageBold(s:name, s:" ", d:hp, s:" HP"; HUDMSG_PLAIN, HID_BOSSHP, CR_RED, 128.0, 24.0, 0);
+			oldhp = hp;
+		}
+		
+		delay(1);
+	} while (hp > 0);
+	
+	Delay(35);
+	ClearMessage(HID_BOSSHP);
+}
+
+
+/*=========================================================*\
+|==================== NAME GENERATOR =======================|
+\*=========================================================*/
+
+#define NounsCount 31
+#define VerbersCount 21
+#define AdjectivesCount 21
+
+str Nouns[NounsCount]=
+{
+	"Autumn",
+	"Forest",
+	"Hell",
+	"Earth",
+	"Grave",
+	"World",
+	"Ass",
+	"Planet",
+	"Nature",
+	"Fire",
+	"Ice",
+	"Rain",
+	"Lava",
+	"Rat",
+	"Terror",
+	"Titan",
+	"Rage",
+	"Thunder",
+	"War",
+	"Moon",
+	"Flame",
+	"Storm",
+	"Sword",
+	"Snow",
+	"Stone",
+	"Blood",
+	"Man",
+	"Iron",
+	"Gold",
+	"Coal",
+	"Bear"
+};
+
+str Verbers[VerbersCount] = 
+{
+	"Kicker",
+	"Lover",
+	"Destroyer",
+	"Walker",
+	"Thrower",
+	"Rider",
+	"Spotter",
+	"Shredder",
+	"Maker",
+	"Singer",
+	"Catcher",
+	"Lighter",
+	"Fighter",
+	"Defender",
+	"Beater",
+	"Screamer",
+	"Crusher",
+	"Cracker",
+	"Breaker",
+	"Hunter",
+	"Speaker"
+};
+
+str Adjectives[AdjectivesCount] =
+{
+	"Great",
+	"Best",
+	"Gorgeous",
+	"Famous",
+	"Tall",
+	"Unreal",
+	"Big",
+	"Unpredictable",
+	"Unwieldy",
+	"Untold",
+	"Old",
+	"Young",
+	"Wild",
+	"Wise",
+	"Brutal",
+	"Quite",
+	"Undestructable",
+	"Rapid",
+	"Fast",
+	"Slow",
+	"Skilful"
+};

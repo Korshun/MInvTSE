@@ -1,0 +1,19 @@
+#include "actors/base.txt"
+#include "actors/blood.txt"
+#include "actors/terrain.txt"
+#include "actors/doomrepl.txt"
+#include "actors/weapons.txt"
+
+#include "actors/basestructs/core.txt"
+#include "actors/basestructs/marines.txt"
+
+#include "actors/inventory/bonus.txt"
+#include "actors/inventory/adrenaline.txt"
+#include "actors/inventory/sentrygun.txt"
+#include "actors/inventory/shield.txt"
+
+#include "actors/monsters/deepone.txt"
+#include "actors/monsters/vulgar.txt"
+#include "actors/monsters/snakeimp.txt"
+#include "actors/monsters/spots.txt"
+

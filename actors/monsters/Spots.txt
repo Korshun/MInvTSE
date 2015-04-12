@@ -1,0 +1,8 @@
+ACTOR MINVCustomSpot : CustomMonsterInvasionSpot
+{
+	//$Category MinvSpots
+}
+
+ACTOR DeepOneSpawner : MINVCustomSpot 12344 { DropItem DeepOne }
+ACTOR VulgarSpawner : MINVCustomSpot 12345 { DropItem Vulgar }
+ACTOR SnakeImpSpawner : MINVCustomSpot 12346 { DropItem SnakeImp }

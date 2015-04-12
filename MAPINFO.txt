@@ -1,0 +1,6 @@
+map MINV01 "Marine Ship"
+{
+	next = MINV01//2
+	sky1 = MSKY_3
+	music = D_MSHIP
+}

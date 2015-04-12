@@ -1,0 +1,154 @@
+//
+// Terrain
+//
+
+slime				dsmuck
+slimesmall			dsmucksm
+water				dsgloop
+watersmall			dsfloush
+burn				dsburn
+burnsmall			dsburnsm
+blood1				dssplat1
+blood2				dssplat2
+$RANDOM blood { blood1 blood2 }
+bloodsmall1			dssplat3
+bloodsmall2			dssplat4
+$RANDOM bloodsmall { bloodsmall1 bloodsmall2 }
+
+//
+// World Sounds / Terrain sounds
+//
+
+world/drip			dsempty
+$random world/watersplash		{dssplash dssplas2 water}
+dssplash	dssplash
+dssplas2	dssplas2
+world/watersplashsmall		dssplsml
+world/sludgegloop		dsploosh
+world/sludgegloopsmall		dsplosml
+world/lavasizzle		dslvsiz
+world/lavsiz2			dslvsiz2
+world/lavasizzlesmall		dslavsml
+world/thunder			dsthun
+
+
+$volume world/watersplash 0.6 
+$volume dssplash 0.6 
+$volume dssplas2 0.6 
+
+$limit dssplash 4
+$limit world/drip 4
+$limit world/watersplash 4
+$limit world/watersplashsmall 4
+$limit world/sludgegloop 4
+$limit world/sludgegloopsmall 4
+$limit world/lavasizzle 4
+$limit world/lavsiz2 4
+$limit world/lavasizzlesmall 4
+
+//
+// Ambient 
+//
+
+AmbientRain a_rain
+AmbientCompWork a_compw
+AmbientSandstorm a_sands
+AmbientSea a_sea
+AmbientSnow a_snow
+AmbientSubmarine a_submar
+
+$Ambient 0 AmbientRain CONTINUOUS 1.0
+$Ambient 3 AmbientCompWork POINT CONTINUOUS 1.0
+$Ambient 4 AmbientSandstorm CONTINUOUS 1.0
+$Ambient 5 AmbientSea CONTINUOUS 1.0
+$Ambient 6 AmbientSnow CONTINUOUS 1.0
+$Ambient 7 AmbientSubmarine CONTINUOUS 1.0
+
+//
+// Base
+//
+
+//Core
+
+TPortalLoop tp_loop
+
+
+TPZap1	tp_zap1
+TPZap2	tp_zap2
+
+$random TPortalZap {TPZap1 TPZap2}
+
+
+TPortalFade tp_fade
+
+
+TPortalAppear tp_app
+
+//
+// Monsters
+//
+
+//DeepOne
+
+$random deepone/pain { deepone/hurt1 deepone/hurt2 deepone/hurt3 deepone/hurt4 }
+
+deepone/hurt1 	DEEPPN1
+deepone/hurt2 	DEEPPN2
+deepone/hurt3  	DEEPPN3
+deepone/hurt4 	DEEPPN4
+
+$random deepone/active { deepone/groan1 deepone/groan2 }
+
+deepone/groan1 	DEEPGN1
+deepone/groan2 	DEEPGN2
+
+$random deepone/meleegrowl { deepone/attack1 deepone/attack2 }
+
+deepone/melee		DSCLAW
+
+deepone/attack1 	DEEPAK1
+deepone/attack2 	DEEPAK2
+
+deepone/sight 		DEEPSEE
+deepone/stealth		DEEPSTTH
+
+deepone/death 	DEEPDTH
+
+deepone/fire 	DEEPFIRE
+
+deepone/firehit 	DEEPFHIT
+
+//Vulgar
+
+$random monster/vulsit 		{ monster/vulsi1  monster/vulsi2 monster/vulsi3 }
+$random monster/vuldth 		{ monster/vuldt1  monster/vuldt2 }
+monster/vulsi1                  dsvulsi1
+monster/vulsi2                  dsvulsi2
+monster/vulsi3                  dsvulsi3
+monster/vulsi4                  dsvulsi4
+monster/vulact                  dsvulact
+monster/vulpai                  dsvulpai
+monster/vuldt1                  dsvuldt1
+monster/vuldt2                  dsvuldt2
+monster/vulswg                  dsvulswg
+monster/vulhit                  dsvulhit
+monster/vulsh1                  dsvulsh1
+monster/vulsh2                  dsvulsh2
+
+//
+// Inventory
+//	
+
+//Sentry
+
+Sentry/Active	DSSENTID
+Sentry/Death	DSSENTDI
+Sentry/Attack	DSSENTFI
+$limit Sentry/Attack	0
+
+//Shield
+
+ForceBarrier/On		DSFRCON
+ForceBarrier/Off	DSFRCOFF
+ForceBarrier/Loop	DSFRCLOP
+$limit frocebarrier/loop 0

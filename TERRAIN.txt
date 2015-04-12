@@ -1,0 +1,194 @@
+//
+// Splashes 
+//
+
+splash 	nukage
+{
+ smallclass 	sludgesplash
+ smallclip		10
+ smallsound	world/lavasizzlesmall
+
+ baseclass		sludgesplash
+ chunkclass	sludgechunk
+ chunkxvelshift	8
+ chunkyvelshift	8
+ chunkzvelshift	6
+ chunkbasezvel	2
+ sound		world/lavasizzle
+ NoAlert
+}
+
+splash Slime
+{
+	smallclass		SlimeSplash
+	smallclip		8
+	smallsound		world/sludgegloopsmall
+	
+
+	baseclass		SlimeSplash
+	chunkclass		SlimeChunk
+	chunkxvelshift	8
+	chunkyvelshift	8
+	chunkzvelshift	8
+	chunkbasezvel	2
+	sound			world/sludgegloop
+	NoAlert
+}
+
+splash 	water
+{
+ smallclass 	watersplashbasesmall
+ smallclip		8
+ smallsound	dssplash
+
+ baseclass		watersplashbase2
+ chunkclass	watersplash
+ chunkxvelshift	8
+ chunkyvelshift	8
+ chunkzvelshift	8
+ chunkbasezvel	2
+ sound		water
+ NoAlert
+}
+
+splash 	blood
+{
+ smallclass 	bloodsplashbasesmall
+ smallclip		8
+ smallsound	world/sludgegloopsmall
+
+
+ baseclass		bloodsplashbase
+ chunkclass	bloodsplash
+ chunkxvelshift	8
+ chunkyvelshift	8
+ chunkzvelshift	8
+ chunkbasezvel	2
+ sound		world/sludgegloop
+ NoAlert
+}
+
+splash 	lava
+{
+ smallclass 	lavasplash
+ smallclip		10
+ smallsound	world/lavasizzlesmall
+
+
+ baseclass		lavasplash
+ chunkxvelshift	-1
+ chunkyvelshift	-1
+ chunkzvelshift	2
+ chunkbasezvel	1
+ sound		world/lavasizzle
+ NoAlert
+}
+
+splash granuke_t
+{
+ smallclass 	ffire_terrain
+ smallclip		10
+
+ chunkxvelshift	8
+ chunkyvelshift	8
+ chunkzvelshift	6
+ chunkbasezvel	2
+ NoAlert
+}
+
+splash swamp
+{
+ smallclass 	watersplashbasesmall
+ smallclip		8
+ smallsound	dssplash
+
+ baseclass		watersplashbase2
+ chunkclass	watersplash
+ chunkxvelshift	8
+ chunkyvelshift	8
+ chunkzvelshift	8
+ chunkbasezvel	2
+ sound		water
+ NoAlert
+}
+
+//********** Terrain **********
+
+terrain	 nukage_t
+{
+ splash 	nukage
+ footclip	 8
+ liquid
+}
+
+terrain	water_t
+{
+ splash 	water
+ footclip	 8
+ liquid
+}
+
+terrain	lava_t
+{
+ splash 	lava
+ footclip	 8
+ liquid
+}
+
+terrain	blood_t
+{
+ footclip	 6
+ liquid
+ splash 	blood
+}
+
+terrain Slime{
+ footclip	 6
+ liquid
+ splash Slime
+}
+
+terrain	granuke_t
+{
+ splash 	granuke_t
+ footclip	 8
+ liquid
+}
+
+//********** Floors **********
+floor GRANUKE1 granuke_t
+floor GRANUKE2 granuke_t
+floor GRANUKE3 granuke_t
+floor nukage1 nukage_t
+floor nukage2 nukage_t
+floor nukage3 nukage_t
+floor hynuke nukage_t
+floor swamp water_t
+floor fwater1 water_t
+floor fwater2 water_t
+floor fwater3 water_t
+floor fwater4 water_t
+floor bwater1 water_t
+floor bwater2 water_t
+floor bwater3 water_t
+floor bwater4 water_t
+floor hywater water_t
+floor lava1 lava_t
+floor lava2 lava_t
+floor lava3 lava_t
+floor lava4 lava_t
+floor wqlava lava_t
+floor blood1 blood_t
+floor blood2 blood_t
+floor blood3 blood_t
+floor wblood1 blood_t
+floor SLIME01 Slime
+floor SLIME02 Slime
+floor SLIME03 Slime
+floor SLIME04 Slime
+floor SLIME05 Slime
+floor SLIME06 Slime
+floor SLIME07 Slime
+floor SLIME08 Slime
+floor WSLIME01 Slime
+floor wfwater1 water_t

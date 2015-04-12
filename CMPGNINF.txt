@@ -1,0 +1,5 @@
+{
+  mapname=minv01
+  gamemode=invasion
+  wavelimit=8
+}

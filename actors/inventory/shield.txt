@@ -1,0 +1,13 @@
+Actor SuperShield : BasicArmorPickup
+{
+  Armor.SavePercent 90.0
+  Armor.SaveAmount 300
+  Inventory.Icon "ARMXA0"
+  Inventory.PickupMessage "Picked up the super shield! \cf(+300% armor, 90% damage reduce\cg)"
+  states
+  {
+  Spawn:
+    ARMX AB 3 Bright
+    Loop
+  }
+}

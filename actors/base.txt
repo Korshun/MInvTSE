@@ -1,0 +1,82 @@
+Actor BaseSplash
+{
+	+CLIENTSIDEONLY
+		
+	Radius 0
+	Height 0
+	Mass 0
+	Alpha 0.6
+	Scale 1.1
+	
+	+DONTSPLASH
+	+NOGRAVITY
+	+NOCLIP
+	
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		stop
+	}
+}
+
+ACTOR BaseSplashDrop
+{
+	PROJECTILE
+	-NOGRAVITY
+	+CORPSE
+    +EXPLODEONWATER
+	+DONTSPLASH
+	
+	Renderstyle Add
+	Alpha 0.5
+	Health 5
+	Mass 400
+	Gravity 1.0
+	Scale 1.1
+	States
+	{
+		TNT1 A 0
+		Stop
+	}
+}
+
+Actor BaseEffect 
+{
+	+CLIENTSIDEONLY
+	+FORCEXYBILLBOARD
+
+	Health 1
+	Radius 0
+	Height 0
+	Mass 0
+	
+	+NOGRAVITY
+	+NOTELEPORT
+	+NOINTERACTION
+	+NOCLIP
+	+NOBLOCKMAP
+	+DONTSPLASH
+
+	States
+	{
+	 Spawn:
+		TNT1 A 0
+		Stop
+	}
+}
+
+ACTOR MinvPlayer : Doomplayer replaces Doomplayer
+{
+	damagefactor "Friendly", 0
+	player.startitem "MinvPistol"
+	player.startitem "MinvFist"
+	Player.StartItem "Clip", 50
+	Player.WeaponSlot 1, MinvFist, Chainsaw
+   	Player.WeaponSlot 2, MinvPistol
+	Player.WeaponSlot 3, MinvShotgun, MinvSuperShotgun
+	Player.WeaponSlot 4, MinvChaingun, Minigun
+	Player.WeaponSlot 5, MinvRocketLauncher, GrenadeLauncher
+	Player.WeaponSlot 6, Railgun, MinvPlasmaRifle, Flamer
+	+GHOST
+}

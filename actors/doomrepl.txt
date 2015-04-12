@@ -1,0 +1,406 @@
+Actor MinvZombieman : Zombieman replaces Zombieman
+{
+	dropitem "BonusSpawner" 5 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	XDeath:
+		POSS M 0 A_SpawnDebris("NashGore_Gib9",0)
+		POSS M 0 A_SpawnDebris("NashGore_Gib10",0)
+		POSS M 0 A_SpawnDebris("NashGore_Gib11",0)
+		POSS M 0 A_SpawnDebris("NashGore_Gib11",0)
+		POSS M 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		POSS M 5
+		POSS N 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		POSS N 5 A_XScream
+		POSS O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		POSS O 5 A_NoBlocking
+		POSS P 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		POSS PQRST 5
+		POSS U -1
+		stop
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedSmall",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvShotgunGuy : ShotgunGuy replaces ShotgunGuy
+{	
+	dropitem "BonusSpawner" 8 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	XDeath:
+		SPOS M 0 A_SpawnDebris("NashGore_Gib9",0)
+		SPOS M 0 A_SpawnDebris("NashGore_Gib10",0)
+		SPOS M 0 A_SpawnDebris("NashGore_Gib11",0)
+		SPOS M 0 A_SpawnDebris("NashGore_Gib11",0)
+		SPOS M 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		SPOS M 5
+		SPOS N 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		SPOS N 5 A_XScream
+		SPOS O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		SPOS O 5 A_NoBlocking
+		SPOS P 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		SPOS PQRST 5
+		SPOS U -1
+		stop
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedSmall",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvDoomImp : DoomImp replaces DoomImp
+{
+	dropitem "BonusSpawner" 8 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	XDeath:
+		TROO N 0 A_SpawnDebris("NashGore_Gib9",0)
+		TROO N 0 A_SpawnDebris("NashGore_Gib10",0)
+		TROO N 0 A_SpawnDebris("NashGore_Gib11",0)
+		TROO N 0 A_SpawnDebris("NashGore_Gib11",0)
+		TROO N 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		TROO N 5
+		TROO O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		TROO O 5 A_XScream
+		TROO P 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		TROO P 5
+		TROO Q 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		TROO Q 5 A_NoBlocking
+		TROO RST 5
+		TROO U -1
+		stop
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedSmall",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvChaingunGuy : ChaingunGuy replaces ChaingunGuy
+{
+	dropitem "BonusSpawner" 9 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	XDeath:
+		CPOS O 0 A_SpawnDebris("NashGore_Gib9",0)
+		CPOS O 0 A_SpawnDebris("NashGore_Gib10",0)
+		CPOS O 0 A_SpawnDebris("NashGore_Gib11",0)
+		CPOS O 0 A_SpawnDebris("NashGore_Gib11",0)	
+		CPOS O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		CPOS O 5
+		CPOS P 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		CPOS P 5 A_XScream
+		CPOS Q 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		CPOS Q 5 A_NoBlocking
+		CPOS R 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		CPOS RS 5
+		CPOS T -1
+		stop
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedSmall",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvPainElemental : PainElemental replaces PainElemental
+{
+	dropitem "BonusSpawner" 15 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+    }
+}
+
+Actor MinvLostSoul : LostSoul replaces LostSoul
+{
+	dropitem "BonusSpawner" 2 1
+	+NOBLOOD
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+    }
+}
+
+Actor MinvDemon : Demon replaces Demon
+{
+	dropitem "BonusSpawner" 10 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvSpectre : Spectre replaces Spectre
+{
+	dropitem "BonusSpawner" 10 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+    Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+	}
+}
+
+Actor MinvFatso : Fatso replaces Fatso	
+{
+	dropitem "BonusSpawner" 35 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvRevenant : Revenant replaces Revenant	
+{
+	dropitem "BonusSpawner" 18 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvCacodemon : Cacodemon replaces Cacodemon	
+{
+	bloodcolor "12 2 F0"
+	dropitem "BonusSpawner" 12 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMediumBlue",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvBaronOfHell : BaronOfHell replaces BaronOfHell
+{
+	bloodcolor "0 C8 0" 
+	dropitem "BonusSpawner" 30 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvHellKnight : HellKnight replaces HellKnight
+{
+	bloodcolor "0 C8 0" 
+	dropitem "BonusSpawner" 20 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvArchvile : Archvile replaces Archvile
+{
+	dropitem "BonusSpawner" 30 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvCyberdemon : Cyberdemon replaces Cyberdemon
+{
+	dropitem "BonusSpawner" 255 2
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedLarge",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvSpiderMastermind : SpiderMastermind replaces SpiderMastermind
+{
+	dropitem "BonusSpawner" 255 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedLarge",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvArachnotron : Arachnotron replaces Arachnotron
+{
+	dropitem "BonusSpawner" 30 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvAbaddon : Abaddon replaces Abaddon
+{
+	dropitem "BonusSpawner" 30 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMediumBlue",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvBelphegor : Belphegor replaces Belphegor
+{
+	bloodcolor "0 C8 0"
+	dropitem "BonusSpawner" 30 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvBloodDemon : BloodDemon replaces BloodDemon
+{
+	dropitem "BonusSpawner" 15 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvHectebus : Hectebus replaces Hectebus
+{
+	dropitem "BonusSpawner" 40 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedMedium",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvDarkImp : DarkImp replaces DarkImp
+{
+	dropitem "BonusSpawner" 9 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedSmall",0,0,0,0)
+		stop
+    }
+}
+
+Actor MinvSuperShotgunGuy : SuperShotgunGuy replaces SuperShotgunGuy
+{
+	dropitem "BonusSpawner" 10 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(902)
+        goto Super::Spawn
+	Crush:
+		TNT1 A 1 A_SpawnItem("NashGore_CrushedSmall",0,0,0,0)
+		stop
+    }
+}
+
+Actor BonusSpawner {}

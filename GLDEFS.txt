@@ -1,0 +1,228 @@
+//
+// Doom lights
+//
+
+object SMINVPLAYER
+{
+    frame PLAYF { light ZOMBIEATK }
+}
+
+object MinvZombieMan
+{
+    frame POSSF { light ZOMBIEATK }
+}
+
+object MinvShotgunGuy
+{
+    frame SPOSF { light ZOMBIEATK }
+}
+
+object MinvChaingunGuy
+{
+    frame CPOSE { light ZOMBIEATK }
+    frame CPOSF { light ZOMBIEATK }
+}
+
+object MinvLostSoul
+{
+    frame SKULA { light LOSTSOUL    }
+    frame SKULB { light LOSTSOUL    }
+    frame SKULC { light LOSTSOUL    }
+    frame SKULD { light LOSTSOUL    }
+    frame SKULE { light LOSTSOUL    }
+    frame SKULF { light LOSTSOUL    }
+    frame SKULG { light LOSTSOUL    }
+
+    frame SKULH { light LOSTSOUL_X1 }
+    frame SKULI { light LOSTSOUL_X2 }
+    frame SKULJ { light LOSTSOUL_X3 }
+    frame SKULK { light LOSTSOUL_X4 }
+}
+
+object MinvArchvile
+{
+    frame VILEH { light ARCHATK1 }
+    frame VILEI { light ARCHATK2 }
+    frame VILEJ { light ARCHATK3 }
+    frame VILEK { light ARCHATK4 }
+    frame VILEL { light ARCHATK4 }
+    frame VILEM { light ARCHATK4 }
+    frame VILEN { light ARCHATK5 }
+    frame VILEO { light ARCHATK6 }
+    frame VILEP { light ARCHATK7 }
+
+    frame VILE[ { light ARCHRES }
+    frame VILE\ { light ARCHRES }
+    frame VILE] { light ARCHRES }
+}
+
+//
+// Minv lights
+//
+
+//Inventory
+
+//Adrenaline
+
+flickerlight2 SERUM
+{
+    color 0.4 0.0 0.0
+    size 16
+    secondarySize 24
+    interval 0.01
+    dontlightself 1
+}
+
+object Adrenaline
+{
+    frame VSRM { light SERUM }
+}
+
+Brightmap Sprite VSRMA0
+{
+	Map BMVSRM
+	DisableFullBright
+}
+
+Brightmap Sprite VSRMB0
+{
+	Map BMVSRM
+	DisableFullBright
+}
+
+Brightmap Sprite VSRMC0
+{
+	Map BMVSRM
+	DisableFullBright
+}
+
+//Shield
+
+PulseLight SUPERSHIELD
+{
+Color 0.6 0.6 0.0
+Size 32
+SecondarySize 48
+Interval 2.5
+}
+
+Object SuperShield
+{
+Frame ARMX { Light SUPERSHIELD }
+}
+
+// Core
+
+flickerlight2 TPortNormal
+{
+    color 0.5 0.5 0.7
+    size 40
+    secondarySize 56
+    interval 0.01
+    offset 0 32 0
+}
+
+flickerlight2 TPortZap
+{
+    color 0.45 0.45 0.9
+    size 88
+    secondarySize 128
+    interval 0.01
+    offset 0 32 0
+}
+
+object Core
+{
+	frame ORBP { light TPortNormal }
+}
+
+//DeepOne
+
+object DeepOneBall
+{
+    frame OLDPA { light OLDP_X1 }
+    frame OLDPB { light OLDP_X2 }
+    frame OLDPC { light OLDP_X3 }
+    frame OLDPD { light OLDP_X4 }
+    frame OLDPE { light OLDP_X5 }
+    frame OLDPF { light OLDP_X6 }
+ }
+
+ flickerlight OLDP_X1
+{
+    color 0 2 0
+    size 40
+    secondarySize 35
+    chance 0.4
+}
+
+ flickerlight OLDP_X2
+{
+    color 0 2 0
+    size 30
+    secondarySize 25
+    chance 0.4
+}
+
+pointlight OLDP_X3
+{
+    color 0.0 2.0 0.0
+    size 48
+    offset 0 0 0
+} 
+
+pointlight OLDP_X4
+{
+    color 0.0 2.0 0.0
+    size 64
+    offset 0 0 0
+} 
+
+pointlight OLDP_X5
+{
+    color 0.0 2.0 0.0
+    size 128
+    offset 0 0 0
+} 
+
+pointlight OLDP_X6
+{
+    color 0.0 2.0 0.0
+    size 64
+    offset 0 0 0
+} 
+
+//Snake imp
+
+Pointlight SnakeImpFireball
+{
+Color 0.0 1.0 0.0
+Size 25
+}
+
+Pointlight SnakeImpFireball2
+{
+Color 0.0 1.0 0.0
+Size 30
+}
+
+Pointlight SnakeImpFireball3
+{
+Color 0.0 0.7 0.0
+Size 25
+}
+
+Pointlight SnakeImpFireball4
+{
+Color 0.0 0.4 0.0
+Size 20
+}
+
+Object SnakeImpFireball
+{
+Frame SIBAA { Light SnakeImpFireball }
+Frame SIBAB { Light SnakeImpFireball }
+Frame SIBAC { Light SnakeImpFireball2 }
+Frame SIBAD { Light SnakeImpFireball3 }
+Frame SIBAE { Light SnakeImpFireball4 }
+}
