@@ -91,17 +91,7 @@ Actor Core 8000
 // Support Actors//
 //***************//
 
-Actor VisualSpecialEffect
-{
-	+CLIENTSIDEONLY
-	+NOINTERACTION
-	+NOBLOCKMAP
-	+NOGRAVITY
-	+NOTELEPORT
-	+FORCEXYBILLBOARD
-}
-
-Actor TPortMist : VisualSpecialEffect
+Actor TPortMist : BaseEffect
 {
 	RenderStyle Add
 	Alpha 0.25
@@ -117,7 +107,7 @@ Actor TPortMist : VisualSpecialEffect
 	}
 }
 
-Actor TPortMistSpawner : VisualSpecialEffect
+Actor TPortMistSpawner : BaseEffect
 {
 	States
 	{
@@ -128,7 +118,7 @@ Actor TPortMistSpawner : VisualSpecialEffect
 	}
 }
 
-Actor TPortLightning : VisualSpecialEffect
+Actor TPortLightning : BaseEffect
 {
 	RenderStyle Add
 	Alpha 0.7
@@ -169,7 +159,7 @@ Actor TPortLightningHuge : TPortLightning
 }
 
 // A wave of lightning
-Actor TPortLightningWave : VisualSpecialEffect
+Actor TPortLightningWave : BaseEffect
 {
 	States
 	{
@@ -184,7 +174,7 @@ Actor TPortLightningWave : VisualSpecialEffect
 }
 
 // Spawns lightning waves
-Actor TPortLightningWaveSpawner : VisualSpecialEffect
+Actor TPortLightningWaveSpawner : BaseEffect
 {
 	States
 	{
