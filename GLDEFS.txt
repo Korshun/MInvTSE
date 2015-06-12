@@ -2,7 +2,7 @@
 // Doom lights
 //
 
-object SMINVPLAYER
+object MINVPLAYER
 {
     frame PLAYF { light ZOMBIEATK }
 }
