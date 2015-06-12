@@ -402,5 +402,3 @@ Actor MinvSuperShotgunGuy : SuperShotgunGuy replaces SuperShotgunGuy
 		stop
     }
 }
-
-Actor BonusSpawner {}
