@@ -19,7 +19,7 @@ Actor BonusSpawner
 	{
 	 Spawn:
 		TNT1 A 0 //A_Actions don't work here
-		TNT1 A 0 A_Jump(150, "Spawn_Adrenaline")
+		TNT1 A 0 A_Jump(100, "Spawn_Adrenaline")
 		TNT1 A 0 A_Jump(100, "Spawn_Turret")
 		goto Spawn_Armor
 	 Spawn_Adrenaline:
@@ -28,7 +28,7 @@ Actor BonusSpawner
 	 Spawn_Turret:
 		TNT1 A 0 A_SpawnItem("SentryBox", 0, 32)
 		stop
-	 Spawn_Grenade:
+	 Spawn_Armor:
 		TNT1 A 0 A_SpawnItem("SuperShield", 0, 32)
 		stop
 	}
