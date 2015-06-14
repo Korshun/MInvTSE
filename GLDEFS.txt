@@ -226,3 +226,13 @@ Frame SIBAC { Light SnakeImpFireball2 }
 Frame SIBAD { Light SnakeImpFireball3 }
 Frame SIBAE { Light SnakeImpFireball4 }
 }
+
+Skybox BROM 
+{
+  BROM_N
+  BROM_E
+  BROM_S
+  BROM_W
+  BROM_T
+  BROM_B
+}
