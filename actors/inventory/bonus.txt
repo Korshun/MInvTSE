@@ -19,8 +19,8 @@ Actor BonusSpawner
 	{
 	 Spawn:
 		TNT1 A 0 //A_Actions don't work here
-		TNT1 A 0 A_Jump(100, "Spawn_Adrenaline")
-		TNT1 A 0 A_Jump(100, "Spawn_Turret")
+		TNT1 A 0 A_Jump(150, "Spawn_Adrenaline")
+		TNT1 A 0 A_Jump(125, "Spawn_Turret")
 		goto Spawn_Armor
 	 Spawn_Adrenaline:
 		TNT1 A 0 A_SpawnItem("Adrenaline", 0, 32)
