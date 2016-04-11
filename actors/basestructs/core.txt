@@ -19,7 +19,7 @@ Actor Core 8000
 	Height 64
 	Mass 0x7ffffff
 	
-	Obituary "%o get too close to power core."
+	Obituary "%o got too close to power core."
 	
 	States
 	{
